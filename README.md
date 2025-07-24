@@ -1,6 +1,6 @@
 # Library Management System Tutorial
 
-## 🎉 Tutorial Complete! - Full Library Management System
+## 🎉 Tutorial Complete! - Full Library Management System with Database Integration
 
 ## Step History
 
@@ -62,6 +62,15 @@
 - Dialog creation and form handling
 - Complete desktop application development
 
+### ✅ Step 11: Database Setup and Connection (Completed)
+
+**What You Learned:**
+- SQLite database setup and JDBC connectivity
+- Database connection management and singleton pattern
+- SQL exception handling and transaction management
+- Database metadata and connection testing
+- Resource management and cleanup patterns
+
 ---
 
 ## 🎯 Final System Overview
@@ -86,13 +95,26 @@
 - `src/Librarian.java` - Extended user with permissions
 - `src/Library.java` - Core business logic and data management
 - `src/LibraryManagementGUI.java` - Complete Swing application
+- `src/DatabaseManager.java` - SQLite database connection and management
 
 ## 🚀 Running the Application
+
+### Prerequisites for Database Features:
+```bash
+# Download SQLite JDBC driver
+wget https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.44.1.0/sqlite-jdbc-3.44.1.0.jar
+```
 
 ### Console Version:
 ```bash
 javac -d out src/*.java
 java -cp out Main
+```
+
+### With Database Support:
+```bash
+javac -cp sqlite-jdbc-3.44.1.0.jar -d out src/*.java
+java -cp "out:sqlite-jdbc-3.44.1.0.jar" Main
 ```
 
 ### GUI Version:

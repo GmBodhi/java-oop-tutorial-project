@@ -131,6 +131,30 @@ public class Main {
         System.out.println("\n🚀 Starting GUI Application...");
         System.out.println("Note: This will open a new window with the complete Library Management System.");
         
+        System.out.println("\n--- Database Integration Demo ---");
+        
+        try {
+            DatabaseManager dbManager = DatabaseManager.getInstance();
+            
+            dbManager.printDatabaseInfo();
+            
+            boolean connectionTest = dbManager.testConnection();
+            System.out.println("Database ready: " + connectionTest);
+            
+            if (connectionTest) {
+                System.out.println("🎉 Database integration successful!");
+                System.out.println("📚 Ready to migrate from in-memory storage to persistent database");
+            }
+            
+        } catch (Exception e) {
+            System.err.println("⚠️ Database integration not available: " + e.getMessage());
+            System.err.println("💡 To enable database features:");
+            System.err.println("   1. Download sqlite-jdbc-3.x.x.jar");
+            System.err.println("   2. Add to classpath: java -cp \".:sqlite-jdbc-3.x.x.jar\" Main");
+            System.err.println("   3. Or add to IDE project libraries");
+            System.out.println("\n📱 Continuing with in-memory storage for now...");
+        }
+        
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeel());
