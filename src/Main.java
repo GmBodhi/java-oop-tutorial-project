@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=================================");
@@ -123,6 +126,18 @@ public class Main {
         newStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
         
         System.out.println("\nAll steps complete! We now have a fully functional Library Management System!");
-        System.out.println("Ready to add the graphical user interface in the next phase.");
+        System.out.println("Ready to launch the graphical user interface!");
+        
+        System.out.println("\n🚀 Starting GUI Application...");
+        System.out.println("Note: This will open a new window with the complete Library Management System.");
+        
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeel());
+                new LibraryManagementGUI().setVisible(true);
+            } catch (Exception e) {
+                System.err.println("Error starting GUI: " + e.getMessage());
+            }
+        });
     }
 }
