@@ -78,6 +78,51 @@ public class Main {
         System.out.println("\nDays until due for transaction 1: " + transaction1.getDaysUntilDue());
         System.out.println("Transaction 1 status: " + transaction1.getStatus());
         
-        System.out.println("\nSteps 3-5 complete! We now have Book, User, and Transaction classes working together.");
+        System.out.println("\n--- Librarian Class Demo ---");
+        
+        Librarian librarian1 = new Librarian("L001", "Sarah Wilson", "sarah.wilson@library.com", 
+                                            "EMP2023001", "Reference");
+        librarian1.promoteToAdministrator();
+        
+        System.out.println("👨‍💼 Sample Librarian:");
+        System.out.println(librarian1.getFormattedInfo());
+        System.out.println("Can add books: " + librarian1.canPerformAction("ADD_BOOKS"));
+        System.out.println("Permission count: " + librarian1.getPermissions().size());
+        
+        System.out.println("\n--- Library System Demo ---");
+        
+        Library library = new Library("Central Public Library", "123 Main Street, Downtown");
+        
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        
+        library.registerUser(user1);
+        library.registerUser(user2);
+        library.registerUser(librarian1);
+        
+        System.out.println("📚 Library: " + library);
+        
+        System.out.println("\n🔍 Search Results for 'Java':");
+        List<Book> javaBooks = library.searchBooksByTitle("Java");
+        javaBooks.forEach(book -> System.out.println("  " + book.getFormattedInfo()));
+        
+        System.out.println("\n📊 Library Statistics:");
+        Map<String, Integer> stats = library.getLibraryStatistics();
+        stats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
+        
+        System.out.println("\n🎯 Testing Borrowing Process:");
+        String result1 = library.borrowBook(book1.getIsbn(), user1.getUserId());
+        String result2 = library.borrowBook(book2.getIsbn(), user2.getUserId());
+        
+        System.out.println("Borrow result 1: " + result1);
+        System.out.println("Borrow result 2: " + result2);
+        
+        System.out.println("\n📈 Updated Statistics After Borrowing:");
+        Map<String, Integer> newStats = library.getLibraryStatistics();
+        newStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
+        
+        System.out.println("\nAll steps complete! We now have a fully functional Library Management System!");
+        System.out.println("Ready to add the graphical user interface in the next phase.");
     }
 }
