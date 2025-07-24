@@ -202,7 +202,39 @@ public class Main {
                 System.out.println("📊 Transaction Statistics:");
                 transactionStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
                 
-                System.out.println("📚 Complete database integration is now functional!");
+                System.out.println("\n--- Complete Database Integration Demo ---");
+                
+                DatabaseLibrary dbLibrary = new DatabaseLibrary("Java Tutorial Library", "Database Campus");
+                
+                dbLibrary.initializeSampleData();
+                
+                System.out.println("\n📚 Database Library: " + dbLibrary);
+                
+                // Test borrowing workflow
+                System.out.println("\n🔄 Testing Database Borrowing Workflow:");
+                List<Book> availableBooks = dbLibrary.getAvailableBooks();
+                List<User> activeUsers = dbLibrary.getActiveUsers();
+                
+                if (!availableBooks.isEmpty() && !activeUsers.isEmpty()) {
+                    Book testBook = availableBooks.get(0);
+                    User testUser = activeUsers.get(0);
+                    
+                    System.out.println("Attempting to borrow: " + testBook.getTitle() + " for " + testUser.getName());
+                    String borrowResult = dbLibrary.borrowBook(testBook.getIsbn(), testUser.getUserId());
+                    System.out.println("Result: " + borrowResult);
+                    
+                    if (borrowResult.contains("successfully")) {
+                        System.out.println("Attempting to return the same book...");
+                        String returnResult = dbLibrary.returnBook(testBook.getIsbn(), testUser.getUserId());
+                        System.out.println("Return result: " + returnResult);
+                    }
+                }
+                
+                System.out.println("\n📊 Final Database Statistics:");
+                Map<String, Integer> finalStats = dbLibrary.getLibraryStatistics();
+                finalStats.forEach((key, value) -> System.out.printf("%-25s: %d%n", key, value));
+                
+                System.out.println("🎉 Complete database integration is now functional!");
             }
             
         } catch (Exception e) {
