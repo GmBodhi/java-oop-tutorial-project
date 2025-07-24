@@ -49,6 +49,35 @@ public class Main {
         System.out.println("After returning: " + book1.getTitle() + " is " + 
                           (book1.isAvailable() ? "available" : "not available"));
         
-        System.out.println("\nStep 3 complete! We now have a working Book class.");
+        System.out.println("\n--- User Class Demo ---");
+        
+        User user1 = new User("U001", "Alice Johnson", "alice.johnson@email.com", "123-456-7890");
+        User user2 = new User("U002", "Bob Smith", "bob.smith@email.com");
+        
+        System.out.println("👥 Sample Users:");
+        System.out.println("1. " + user1.getFormattedInfo());
+        System.out.println("2. " + user2.getFormattedInfo());
+        
+        System.out.println("\n📚 Testing Book Borrowing:");
+        System.out.println("Before borrowing: " + user1.getBorrowingSummary());
+        
+        boolean borrowed1 = user1.borrowBook(book1.getIsbn());
+        boolean borrowed2 = user1.borrowBook(book3.getIsbn());
+        
+        System.out.println("Borrowed Clean Code: " + borrowed1);
+        System.out.println("Borrowed Effective Java: " + borrowed2);
+        System.out.println("After borrowing: " + user1.getBorrowingSummary());
+        
+        System.out.println("\n📋 Transaction Demo:");
+        BorrowTransaction transaction1 = new BorrowTransaction("T000001", book1.getIsbn(), user1.getUserId());
+        BorrowTransaction transaction2 = new BorrowTransaction("T000002", book3.getIsbn(), user1.getUserId(), 21);
+        
+        System.out.println("1. " + transaction1.getFormattedInfo());
+        System.out.println("2. " + transaction2.getFormattedInfo());
+        
+        System.out.println("\nDays until due for transaction 1: " + transaction1.getDaysUntilDue());
+        System.out.println("Transaction 1 status: " + transaction1.getStatus());
+        
+        System.out.println("\nSteps 3-5 complete! We now have Book, User, and Transaction classes working together.");
     }
 }
