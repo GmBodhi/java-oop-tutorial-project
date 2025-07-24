@@ -71,6 +71,16 @@
 - Database metadata and connection testing
 - Resource management and cleanup patterns
 
+### ✅ Step 12: Database Schema Creation and Table Design (Completed)
+
+**What You Learned:**
+- Relational database design and normalization
+- SQL DDL (Data Definition Language) for table creation
+- Primary keys, foreign keys, and constraints
+- Database indexes for performance optimization
+- SQL data types and column constraints
+- Schema versioning and migration concepts
+
 ---
 
 ## 🎯 Final System Overview
@@ -96,6 +106,7 @@
 - `src/Library.java` - Core business logic and data management
 - `src/LibraryManagementGUI.java` - Complete Swing application
 - `src/DatabaseManager.java` - SQLite database connection and management
+- `src/DatabaseSchema.java` - Database schema creation and table design
 
 ## 🚀 Running the Application
 

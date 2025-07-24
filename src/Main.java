@@ -143,6 +143,19 @@ public class Main {
             
             if (connectionTest) {
                 System.out.println("🎉 Database integration successful!");
+                
+                DatabaseSchema schema = new DatabaseSchema();
+                
+                if (!schema.tablesExist()) {
+                    System.out.println("📋 Creating database schema...");
+                    schema.createAllTables();
+                } else {
+                    System.out.println("📋 Database schema already exists");
+                }
+                
+                schema.printAllTablesInfo();
+                schema.printDataSummary();
+                
                 System.out.println("📚 Ready to migrate from in-memory storage to persistent database");
             }
             
