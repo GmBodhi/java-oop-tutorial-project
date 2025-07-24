@@ -81,6 +81,26 @@
 - SQL data types and column constraints
 - Schema versioning and migration concepts
 
+### ✅ Step 13: Book Data Access Layer with SQL Operations (Completed)
+
+**What You Learned:**
+- Data Access Object (DAO) design pattern
+- Parameterized SQL queries and injection prevention
+- Advanced SQL features (LIKE, ORDER BY, GROUP BY, LIMIT)
+- Result set mapping to Java objects
+- Database transaction management and error recovery
+- Search functionality with relevance ranking
+
+### ✅ Step 14: User and Transaction Database Integration (Completed)
+
+**What You Learned:**
+- Complete DAO implementation for all entities
+- Complex SQL queries with joins and aggregations
+- Database referential integrity and cascade operations
+- Transaction statistics and reporting queries
+- Data validation and constraint handling
+- Database performance optimization techniques
+
 ---
 
 ## 🎯 Final System Overview
@@ -107,6 +127,9 @@
 - `src/LibraryManagementGUI.java` - Complete Swing application
 - `src/DatabaseManager.java` - SQLite database connection and management
 - `src/DatabaseSchema.java` - Database schema creation and table design
+- `src/BookDAO.java` - Book data access layer with CRUD operations
+- `src/UserDAO.java` - User data access layer with user management
+- `src/TransactionDAO.java` - Transaction data access layer with borrowing logic
 
 ## 🚀 Running the Application
 

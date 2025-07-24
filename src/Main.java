@@ -178,7 +178,31 @@ public class Main {
                 System.out.println("\n📊 Book Statistics:");
                 bookStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
                 
-                System.out.println("📚 Database storage is now functional!");
+                System.out.println("\n--- User Data Access Layer Demo ---");
+                UserDAO userDAO = new UserDAO();
+                
+                if (userDAO.getTotalUserCount() == 0) {
+                    System.out.println("👥 Inserting sample users...");
+                    userDAO.insertSampleUsers();
+                } else {
+                    System.out.println("👥 Users already exist in database");
+                }
+                
+                List<User> activeUsers = userDAO.findActiveUsers();
+                System.out.println("Active users: " + activeUsers.size());
+                
+                Map<String, Integer> userStats = userDAO.getUserStatistics();
+                System.out.println("\n📊 User Statistics:");
+                userStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
+                
+                System.out.println("\n--- Transaction Data Access Layer Demo ---");
+                TransactionDAO transactionDAO = new TransactionDAO();
+                
+                Map<String, Integer> transactionStats = transactionDAO.getTransactionStatistics();
+                System.out.println("📊 Transaction Statistics:");
+                transactionStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
+                
+                System.out.println("📚 Complete database integration is now functional!");
             }
             
         } catch (Exception e) {
