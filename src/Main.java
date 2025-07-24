@@ -156,7 +156,29 @@ public class Main {
                 schema.printAllTablesInfo();
                 schema.printDataSummary();
                 
-                System.out.println("📚 Ready to migrate from in-memory storage to persistent database");
+                System.out.println("\n--- Book Data Access Layer Demo ---");
+                BookDAO bookDAO = new BookDAO();
+                
+                if (bookDAO.getTotalBookCount() == 0) {
+                    System.out.println("📚 Inserting sample books...");
+                    bookDAO.insertSampleBooks();
+                } else {
+                    System.out.println("📚 Books already exist in database");
+                }
+                
+                System.out.println("\n🔍 Testing Book Search Operations:");
+                List<Book> javaBooks = bookDAO.findByTitle("Java");
+                System.out.println("Found " + javaBooks.size() + " books with 'Java' in title:");
+                javaBooks.forEach(book -> System.out.println("  - " + book.getFormattedInfo()));
+                
+                List<Book> availableBooks = bookDAO.findAvailableBooks();
+                System.out.println("\nAvailable books: " + availableBooks.size());
+                
+                Map<String, Integer> bookStats = bookDAO.getBookStatistics();
+                System.out.println("\n📊 Book Statistics:");
+                bookStats.forEach((key, value) -> System.out.printf("%-20s: %d%n", key, value));
+                
+                System.out.println("📚 Database storage is now functional!");
             }
             
         } catch (Exception e) {
